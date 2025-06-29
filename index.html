@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TechnoSpark Newsroom</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0; padding: 0;
+    }
+    header {
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .news-article {
+      background: rgba(255, 255, 255, 0.9);
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+    .news-article h3 {
+      margin: 0 0 10px;
+    }
+    .buttons {
+      margin-top: 10px;
+    }
+    .buttons button {
+      margin-right: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .buttons button:hover {
+      opacity: 0.9;
+    }
+    .real { background-color: #27ae60; color: white; }
+    .fake { background-color: #e74c3c; color: white; }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📰 TechnoSpark Newsroom</h1>
+    <p>Can you guess which news is real or fake?</p>
+  </header>
+
+  <div class="container">
+
+    <!-- News 1 -->
+    <div class="news-article">
+      <h3>1. Scientists discover a new ocean under Earth's crust</h3>
+      <p>Researchers claim to have found a massive ocean 400 miles beneath Earth's surface.</p>
+      <div class="buttons">
+        <button class="real" onclick="check(this, 'real')">Real</button>
+        <button class="fake" onclick="check(this, 'real')">Fake</button>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <!-- News 2 -->
+    <div class="news-article">
+      <h3>2. Man trains ants to form words on command</h3>
+      <p>A man reportedly taught ants to spell his name using pheromone signals.</p>
+      <div class="buttons">
+        <button class="real" onclick="check(this, 'fake')">Real</button>
+        <button class="fake" onclick="check(this, 'fake')">Fake</button>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <!-- News 3 -->
+    <div class="news-article">
+      <h3>3. French law allows marriage with deceased partners</h3>
+      <p>In France, it’s legally possible to marry someone who has passed away under special conditions.</p>
+      <div class="buttons">
+        <button class="real" onclick="check(this, 'real')">Real</button>
+        <button class="fake" onclick="check(this, 'real')">Fake</button>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <!-- News 4 -->
+    <div class="news-article">
+      <h3>4. Government to replace traffic lights with laser beams</h3>
+      <p>New system claims to reduce congestion using laser signals instead of colored lights.</p>
+      <div class="buttons">
+        <button class="real" onclick="check(this, 'fake')">Real</button>
+        <button class="fake" onclick="check(this, 'fake')">Fake</button>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <!-- News 5 -->
+    <div class="news-article">
+      <h3>5. A man survived 76 days lost at sea eating raw fish and rainwater</h3>
+      <p>He was rescued near the Bahamas after drifting across the Atlantic.</p>
+      <div class="buttons">
+        <button class="real" onclick="check(this, 'real')">Real</button>
+        <button class="fake" onclick="check(this, 'real')">Fake</button>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <!-- News 6 -->
+    <div class="news-article">
+      <h3>6. Moon will turn green for first time in 500 years</h3>
+      <p>Viral news claims Earth's atmosphere will tint the moon green during an eclipse.</p>
+      <div class="buttons">
+        <button class="real" onclick="check(this, 'fake')">Real</button>
+        <button class="fake" onclick="check(this, 'fake')">Fake</button>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <!-- News 7 -->
+    <div class="news-article">
+      <h3>7. Bananas are slightly radioactive</h3>
+      <p>Because of their potassium content, bananas emit small amounts of radiation.</p>
+      <div class="buttons">
+        <button class="real" onclick="check(this, 'real')">Real</button>
+        <button class="fake" onclick="check(this, 'real')">Fake</button>
+      </div>
+      <div class="result"></div>
+    </div>
+
+    <!-- News 8 -->
+    <div class="news-article">
+      <h3>8. New app lets users smell food through the screen</h3>
+      <p>A company claims its new app transmits food smells via vibrations and screen heat.</p>
+      <div class="buttons">
+        <button class="real" onclick="check(this, 'fake')">Real</button>
+        <button class="fake" onclick="check(this, 'fake')">Fake</button>
+      </div>
+      <div class="result"></div>
+    </div>
+
+  </div>
+
+  <script>
+    function check(button, correctAnswer) {
+      const parent = button.parentElement.parentElement;
+      const resultDiv = parent.querySelector('.result');
+      const userAnswer = button.classList.contains('real') ? 'real' : 'fake';
+
+      if (userAnswer === correctAnswer) {
+        resultDiv.textContent = '✅ Correct!';
+        resultDiv.style.color = 'green';
+      } else {
+        resultDiv.textContent = '❌ Wrong!';
+        resultDiv.style.color = 'red';
+      }
+
+      const buttons = parent.querySelectorAll('button');
+      buttons.forEach(btn => btn.disabled = true);
+    }
+  </script>
+</body>
+</html>
